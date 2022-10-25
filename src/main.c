@@ -10,8 +10,8 @@ void	init_push_swap(t_stka *stka, int argc)
 
 void	validate_input(t_stka *stka, char **argv)
 {
-	int	i;
-	int	num;
+	int		i;
+	long	num;
 
 	argv++;
 	i = 0;
