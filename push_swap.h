@@ -7,6 +7,11 @@
 # include <limits.h>
 # include "libft/libft.h"
 
+typedef enum e_stktype {
+    STK_A = 0,
+    STK_B = 1,
+}   t_stktype;
+
 typedef struct  s_stacks {
     int *stka_arr;
     int stka_len;
@@ -32,5 +37,6 @@ void    rrb(t_stacks *stacks);
 void    rrr(t_stacks *stacks);
 void    pa(t_stacks *stacks);
 void    pb(t_stacks *stacks);
+void    sort_3(t_stacks *stacks, t_stktype type);
 
 #endif
