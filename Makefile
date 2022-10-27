@@ -2,7 +2,8 @@ NAME	= push_swap
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 
-SRCS	= main.c error.c utils.c
+SRCS	= main.c utils/error.c utils/validation.c utils/display.c \
+	functions/swap.c functions/rotate.c functions/rev_rotate.c functions/push.c
 SRCS_P	= ${addprefix src/, ${SRCS}}
 OBJS	= ${SRCS_P:.c=.o}
 

@@ -7,16 +7,30 @@
 # include <limits.h>
 # include "libft/libft.h"
 
-typedef struct  s_stka {
-    int *num_arr;
-    int len;
+typedef struct  s_stacks {
+    int *stka_arr;
+    int stka_len;
+    int *stkb_arr;
+    int stkb_len;
 
-}   t_stka;
+}   t_stacks;
 
-int	    valid_duplicate(t_stka *stka, int num, int i);
+int	    valid_duplicate(t_stacks *stacks, int num, int i);
 int	    valid_digits(char *num);
-void	printStackA(t_stka stka);
+void	printStackA(t_stacks stacks);
+void	printStackB(t_stacks stacks);
 void    err_exit(char *err);
 void    putstr_err(char *err);
+void    sa(t_stacks *stacks);
+void    sb(t_stacks *stacks);
+void    ss(t_stacks *stacks);
+void    ra(t_stacks *stacks);
+void    rb(t_stacks *stacks);
+void    rr(t_stacks *stacks);
+void    rra(t_stacks *stacks);
+void    rrb(t_stacks *stacks);
+void    rrr(t_stacks *stacks);
+void    pa(t_stacks *stacks);
+void    pb(t_stacks *stacks);
 
 #endif
