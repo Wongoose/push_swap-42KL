@@ -4,6 +4,7 @@ void    ra(t_stacks *stacks)
 {
     int swap_count;
 
+    ft_putstr_fd("ra\n", stacks->log_fd);
     swap_count = 0;
     while (swap_count < stacks->stka_len - 1)
     {
@@ -16,6 +17,7 @@ void    rb(t_stacks *stacks)
 {
     int swap_count;
 
+    ft_putstr_fd("rb\n", stacks->log_fd);
     swap_count = 0;
     while (swap_count < stacks->stkb_len - 1)
     {

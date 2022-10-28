@@ -2,6 +2,7 @@
 
 void    pa(t_stacks *stacks)
 {
+    ft_putstr_fd("pa\n", stacks->log_fd);
     if (stacks->stkb_len == 0)
         return ;
     if (stacks->stka_len != 0)
@@ -16,6 +17,7 @@ void    pa(t_stacks *stacks)
 
 void    pb(t_stacks *stacks)
 {
+    ft_putstr_fd("pb\n", stacks->log_fd);
     if (stacks->stka_len == 0)
         return ;
     if (stacks->stkb_len != 0)

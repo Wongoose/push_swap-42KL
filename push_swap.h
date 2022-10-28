@@ -5,6 +5,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <fcntl.h>
 # include "libft/libft.h"
 
 typedef enum e_stktype {
@@ -17,6 +18,7 @@ typedef struct  s_stacks {
     int stka_len;
     int *stkb_arr;
     int stkb_len;
+    int log_fd;
 
 }   t_stacks;
 
@@ -38,5 +40,6 @@ void    rrr(t_stacks *stacks);
 void    pa(t_stacks *stacks);
 void    pb(t_stacks *stacks);
 void    sort_3(t_stacks *stacks, t_stktype type);
+void    sort_5(t_stacks *stacks);
 
 #endif

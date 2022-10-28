@@ -13,6 +13,7 @@ void	init_push_swap(t_stacks *stacks, int argc)
 	printf("Start of pointer B is: (%p)\n", stacks->stkb_arr);
 	stacks->stkb_arr += (argc - 2); // argc - 1 is the number of integers, then -1 again for offset
 	printf("End of pointer B is: (%p)\n", stacks->stkb_arr);
+	stacks->log_fd = open("log", O_RDWR);
 }
 
 void	validate_input(t_stacks *stacks, char **argv)
@@ -44,21 +45,12 @@ int	main(int argc, char **argv)
 		putstr_err("Invalid number of arguments!");
 	init_push_swap(&stacks, argc);
 	validate_input(&stacks, argv);
-	// Testing functions below
-	// printStackA(stacks);
-	// ra(&stacks);
 	printStackA(stacks);
 	printStackB(stacks);
-	pb(&stacks);
-	pb(&stacks);
-	printStackA(stacks);
-	printStackB(stacks);
-	sort_3(&stacks, STK_A);
-	rra(&stacks);
-	pa(&stacks);
-	pa(&stacks);
-	rra(&stacks);
-	rra(&stacks);
+	if (stacks.stka_len == 3)
+		sort_3(&stacks, STK_A);
+	else if (stacks.stka_len == 5)
+		sort_5(&stacks);
 	printStackA(stacks);
 	printStackB(stacks);
 	return (0);

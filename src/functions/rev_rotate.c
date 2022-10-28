@@ -3,7 +3,8 @@
 void    rra(t_stacks *stacks)
 {
     int swap_count;
-
+    
+    ft_putstr_fd("rra\n", stacks->log_fd);
     swap_count = stacks->stka_len - 1;
     while (swap_count > 0)
     {
@@ -16,6 +17,7 @@ void    rrb(t_stacks *stacks)
 {
     int swap_count;
 
+    ft_putstr_fd("rrb\n", stacks->log_fd);
     swap_count = stacks->stkb_len - 1;
     while (swap_count > 0)
     {
