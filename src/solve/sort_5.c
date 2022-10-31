@@ -23,7 +23,7 @@ void    insert_back(t_stacks *stacks, int i)
     int count;
 
     count = 0;
-    while (count <= i - stacks->stka_len / 2)
+    while (count < stacks->stka_len - (i + 1))
     {
         rra(stacks);
         count++;
@@ -63,7 +63,7 @@ void    sort_5(t_stacks *stacks)
     pb(stacks);
     pb(stacks);
     sort_3(stacks, STK_A);
-    printf("\n\n==SORTING 5==\n\n");
+    printf("\n\n==SORTING 7==\n\n");
     while (stacks->stkb_len > 0)
     {
         if (!insert_limits(stacks))
