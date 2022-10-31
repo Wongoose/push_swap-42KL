@@ -23,3 +23,17 @@ void	printStackB(t_stacks stacks)
 	while (i < stacks.stkb_len)
 		printf("%d\n", stacks.stkb_arr[i++]);
 }
+
+void	printChunks(t_chunk *chunks)
+{
+	int	i;
+
+	i = 0;
+	while (i < 5)
+	{
+		printf("\n==\n\n");
+		printf("Chunk%d min is: %d\n", i + 1, chunks[i].min);
+		printf("Chunk%d max is: %d\n", i + 1, chunks[i].max);
+		i++;
+	}
+}

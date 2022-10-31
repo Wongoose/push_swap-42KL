@@ -27,19 +27,19 @@ typedef struct  s_chunk {
     int max;
 } t_chunk;
 
-typedef struct  s_sort100 {
-    struct s_chunk chunk1;
-    struct s_chunk chunk2;
-    struct s_chunk chunk3;
-    struct s_chunk chunk4;
-    struct s_chunk chunk5;
+typedef struct  s_sortvars {
+    int min;
+    int max;
+    int range;
+    struct s_chunk *chunk_list;
 
-}   t_sort100;
+}   t_sortvars;
 
 int	    valid_duplicate(t_stacks *stacks, int num, int i);
 int	    valid_digits(char *num);
 void	printStackA(t_stacks stacks);
 void	printStackB(t_stacks stacks);
+void	printChunks(t_chunk *chunks);
 void    err_exit(char *err);
 void    putstr_err(char *err);
 void    sa(t_stacks *stacks);
