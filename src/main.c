@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 	if (stacks.stka_len == 3)
 		sort_3(&stacks, STK_A);
 	else if (stacks.stka_len == 5)
-		sort_5(&stacks);
+		sort_100(&stacks);
 	// else if (stacks.stka_len == 100)
 	// 	sort_100(&stacks);
 	return (0);

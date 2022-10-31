@@ -22,6 +22,20 @@ typedef struct  s_stacks {
 
 }   t_stacks;
 
+typedef struct  s_chunk {
+    int min;
+    int max;
+} t_chunk;
+
+typedef struct  s_sort100 {
+    struct s_chunk chunk1;
+    struct s_chunk chunk2;
+    struct s_chunk chunk3;
+    struct s_chunk chunk4;
+    struct s_chunk chunk5;
+
+}   t_sort100;
+
 int	    valid_duplicate(t_stacks *stacks, int num, int i);
 int	    valid_digits(char *num);
 void	printStackA(t_stacks stacks);
@@ -39,7 +53,12 @@ void    rrb(t_stacks *stacks);
 void    rrr(t_stacks *stacks);
 void    pa(t_stacks *stacks);
 void    pb(t_stacks *stacks);
+int     insert_limits(t_stacks *stacks, t_stktype type);
+void    insert_front(t_stacks *stacks, int i, t_stktype type);
+void    insert_back(t_stacks *stacks, int i, t_stktype type);
+void    find_and_insert(t_stacks *stacks, t_stktype type, int insert_num);
 void    sort_3(t_stacks *stacks, t_stktype type);
 void    sort_5(t_stacks *stacks);
+void    sort_100(t_stacks *stacks);
 
 #endif
