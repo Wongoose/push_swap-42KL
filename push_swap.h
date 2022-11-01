@@ -32,6 +32,8 @@ typedef struct  s_sortvars {
     int max;
     int range;
     struct s_chunk *chunk_list;
+    int hold_first;
+    int hold_second;
 
 }   t_sortvars;
 
