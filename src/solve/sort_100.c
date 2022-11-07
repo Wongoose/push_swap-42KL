@@ -21,25 +21,25 @@ void	find_range(t_stacks *stacks, t_sortvars *svars)
 	svars->max = max;
 }
 
-void	init_chunks(t_sortvars *svars)
+void	init_chunks(t_sortvars *svars, int chunks)
 {
 	t_chunk	*chunk_list;
 	int		i;
 	int		range;
 
 	range = svars->max - svars->min;
-	chunk_list = malloc(sizeof(t_chunk) * 5);
+	chunk_list = malloc(sizeof(t_chunk) * chunks);
 	i = 0;
-	while (i < 5)
+	while (i < chunks)
 	{
 		chunk_list[i].min = svars->min;
-		if (svars->min + (range / 5) >= svars->max)
+		if (svars->min + (range / chunks) >= svars->max)
 		{
 			chunk_list[i].max = svars->max;
 			break ;
 		}
-		chunk_list[i].max = svars->min + (range / 5);
-		svars->min += (range / 5 + 1);
+		chunk_list[i].max = svars->min + (range / chunks);
+		svars->min += (range / chunks + 1);
 		i++;
 	}
 	svars->chunk_list = chunk_list;
@@ -76,7 +76,7 @@ void	scan_stack(t_stacks *stacks, t_sortvars *svars)
 
 	i = 0;
 	// Change chunk list to link list
-	while (i < 5)
+	while (i < svars->total_chunks)
 	{
 		chunk = svars->chunk_list[i];
 		printf("\n====SCANNING CHUNK %d====\n", i + 1);
@@ -135,13 +135,14 @@ void    sort_100(t_stacks *stacks)
 	int			i;
 	int			max_i;
 
-	// init values only
-	svars.hold_first = -1;
-	svars.hold_second = -1;
 	find_range(stacks, &svars);
     printf("\nMin is: %d\n", svars.min);
     printf("Max is: %d\n", svars.max);
-	init_chunks(&svars);
+	if (stacks->stka_len <= 100)
+		svars.total_chunks = 5;
+	else if (stacks->stka_len <= 500)
+		svars.total_chunks = 13;
+	init_chunks(&svars, svars.total_chunks);
     printChunks(svars.chunk_list);
 	scan_stack(stacks, &svars);
 	printStackA(*stacks);
@@ -165,8 +166,6 @@ void    sort_100(t_stacks *stacks)
 			rotate_and_push2(stacks, rrb, stacks->stkb_len - max_i);
 		}
     }
-	printStackA(*stacks);
-	printStackB(*stacks);
     // scan stack A (hold_1st & hold_2nd)
     // get num to the top
     // insert to stack B

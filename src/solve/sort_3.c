@@ -66,6 +66,4 @@ void sort_3(t_stacks *stacks, t_stktype type)
         sort_3b(stacks);
     else
         return ;
-    printStackA(*stacks);
-	printStackB(*stacks);
 }

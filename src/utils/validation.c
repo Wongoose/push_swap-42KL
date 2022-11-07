@@ -24,3 +24,17 @@ int	valid_digits(char *num)
 	}
 	return (1);
 }
+
+int	is_sorted(t_stacks stacks)
+{
+	int	i;
+
+	i = 0;	
+	while (i < stacks.stka_len - 1)
+	{
+		if (stacks.stka_arr[i] > stacks.stka_arr[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}

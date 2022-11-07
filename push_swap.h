@@ -34,11 +34,13 @@ typedef struct  s_sortvars {
     struct s_chunk *chunk_list;
     int hold_first;
     int hold_second;
+    int total_chunks;
 
 }   t_sortvars;
 
 int	    valid_duplicate(t_stacks *stacks, int num, int i);
 int	    valid_digits(char *num);
+int	    is_sorted(t_stacks stacks);
 void	printStackA(t_stacks stacks);
 void	printStackB(t_stacks stacks);
 void	printChunks(t_chunk *chunks);

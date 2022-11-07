@@ -47,12 +47,18 @@ int	main(int argc, char **argv)
 	validate_input(&stacks, argv);
 	printStackA(stacks);
 	printStackB(stacks);
-	// solve less than 3 and 5
-	if (stacks.stka_len == 3)
+	// REMEMBER to free when end
+	if (is_sorted(stacks))
+		return (0);
+	if (stacks.stka_len == 2)
+		sa(&stacks);
+	else if (stacks.stka_len == 3)
 		sort_3(&stacks, STK_A);
-	else if (stacks.stka_len >= 5)
+	else if (stacks.stka_len <= 5)
+		sort_5(&stacks);
+	else if (stacks.stka_len > 5)
 		sort_100(&stacks);
-	// else if (stacks.stka_len == 100)
-	// 	sort_100(&stacks);
+	printStackA(stacks);
+	printStackB(stacks);
 	return (0);
 }
