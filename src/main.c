@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 	else if (stacks.stka_len <= 5)
 		sort_5(&stacks);
 	else if (stacks.stka_len > 5)
-		sort_100(&stacks);
+		sort_large(&stacks);
 	printStackA(stacks);
 	printStackB(stacks);
 	return (0);

@@ -25,6 +25,9 @@ typedef struct  s_stacks {
 typedef struct  s_chunk {
     int min;
     int max;
+    int startnum;
+    int endnum;
+    int len;
 } t_chunk;
 
 typedef struct  s_sortvars {
@@ -35,6 +38,9 @@ typedef struct  s_sortvars {
     int hold_first;
     int hold_second;
     int total_chunks;
+    int median;
+    t_list *stka_chunks;
+    t_list *stkb_chunks;
 
 }   t_sortvars;
 
@@ -64,5 +70,6 @@ void    find_and_insert(t_stacks *stacks, t_stktype type, int insert_num);
 void    sort_3(t_stacks *stacks, t_stktype type);
 void    sort_5(t_stacks *stacks);
 void    sort_100(t_stacks *stacks);
+void    sort_large(t_stacks *stacks);
 
 #endif
