@@ -6,7 +6,7 @@ void    sort_5(t_stacks *stacks)
 
     i = stacks->stka_len - 3;
     while (i--)
-        pb(stacks);
+        pb(stacks, 0);
     sort_3(stacks, STK_A);
     printf("\n\n==SORTING 5==\n\n");
     while (stacks->stkb_len > 0)

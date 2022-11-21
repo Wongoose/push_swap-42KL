@@ -8,21 +8,21 @@ int insert_limits(t_stacks *stacks, t_stktype type)
     if (b_num < stacks->stka_arr[0])
     {
         if (type == STK_A)
-            pa(stacks);
+            pa(stacks, 0);
         else
-            pb(stacks);
+            pb(stacks, 0);
         return (1);
     }
     else if (b_num > stacks->stka_arr[stacks->stka_len - 1])
     {
         if (type == STK_A)
-            pa(stacks);
+            pa(stacks, 0);
         else
-            pb(stacks);
+            pb(stacks, 0);
         if (type == STK_A)
-            ra(stacks);
+            ra(stacks, 0);
         else
-            rb(stacks);
+            rb(stacks, 0);
         return (1);
     }
     return (0);
@@ -36,21 +36,21 @@ void    insert_front(t_stacks *stacks, int i, t_stktype type)
     while (count <= i)
     {
         if (type == STK_A)
-            ra(stacks);
+            ra(stacks, 0);
         else
-            rb(stacks);
+            rb(stacks, 0);
         count++;
     }
     if (type == STK_A)
-        pa(stacks);
+        pa(stacks, 0);
     else
-        pb(stacks);
+        pb(stacks, 0);
     while (count > 0)
     {
         if (type == STK_A)
-            rra(stacks);
+            rra(stacks, 0);
         else
-            rrb(stacks);
+            rrb(stacks, 0);
         count--;
     }
 }
@@ -63,21 +63,21 @@ void    insert_back(t_stacks *stacks, int i, t_stktype type)
     while (count < stacks->stka_len - (i + 1))
     {
         if (type == STK_A)
-            rra(stacks);
+            rra(stacks, 0);
         else
-            rrb(stacks);
+            rrb(stacks, 0);
         count++;
     }
     if (type == STK_A)
-        pa(stacks);
+        pa(stacks, 0);
     else
-        pb(stacks);
+        pb(stacks, 0);
     while (count >= 0)
     {
         if (type == STK_A)
-            ra(stacks);
+            ra(stacks, 0);
         else
-            rb(stacks);
+            rb(stacks, 0);
         count--;
     }
 }

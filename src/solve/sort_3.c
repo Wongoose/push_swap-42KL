@@ -15,17 +15,17 @@ void sort_3a(t_stacks *stacks)
     else if ((num1 > num2 && num2 > num3) && num3 < num1)
     {
         sa(stacks);
-        rra(stacks);
+        rra(stacks, 0);
     }
     else if (num1 > num2 && num2 < num3 && num3 < num1)
-        ra(stacks);
+        ra(stacks, 0);
     else if (num1 < num2 && num2 > num3 && num3 > num1)
     {
         sa(stacks);
-        ra(stacks);
+        ra(stacks, 0);
     }
     else if (num1 < num2 && num2 > num3 && num3 < num1)
-        rra(stacks);
+        rra(stacks, 0);
 }
 
 void sort_3b(t_stacks *stacks)
@@ -43,17 +43,17 @@ void sort_3b(t_stacks *stacks)
     else if ((num1 > num2 && num2 > num3) && num3 < num1)
     {
         sb(stacks);
-        rrb(stacks);
+        rrb(stacks, 0);
     }
     else if (num1 > num2 && num2 < num3 && num3 < num1)
-        rb(stacks);
+        rb(stacks, 0);
     else if (num1 < num2 && num2 > num3 && num3 > num1)
     {
         sb(stacks);
-        rb(stacks);
+        rb(stacks, 0);
     }
     else if (num1 < num2 && num2 > num3 && num3 < num1)
-        rrb(stacks);
+        rrb(stacks, 0);
 }
 
 // For now, technically don't need sort_3b. Only sort_3a is used.

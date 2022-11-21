@@ -1,6 +1,6 @@
 #include "../../push_swap.h"
 
-void    rra(t_stacks *stacks)
+void    rra(t_stacks *stacks, t_chunk *chunk)
 {
     int swap_count;
     
@@ -11,9 +11,11 @@ void    rra(t_stacks *stacks)
         ft_swap(&stacks->stka_arr[swap_count], &stacks->stka_arr[swap_count - 1]);
         swap_count--;
     }
+    if (chunk)
+        chunk->size++;
 }
 
-void    rrb(t_stacks *stacks)
+void    rrb(t_stacks *stacks, t_chunk *chunk)
 {
     int swap_count;
 
@@ -24,10 +26,12 @@ void    rrb(t_stacks *stacks)
         ft_swap(&stacks->stkb_arr[swap_count], &stacks->stkb_arr[swap_count - 1]);
         swap_count--;
     }
+    if (chunk)
+        chunk->size++;
 }
 
-void    rrr(t_stacks *stacks)
+void    rrr(t_stacks *stacks, t_chunk *chunk)
 {
-    ra(stacks);
-    rb(stacks);
+    rra(stacks, chunk);
+    rrb(stacks, chunk);
 }

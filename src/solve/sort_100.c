@@ -52,19 +52,19 @@ int	within_bounds(int num, int min, int max)
 	return (0);
 }
 
-void	rotate_and_push(t_stacks *stacks, void (*rotate)(t_stacks *stacks), int i)
+void	rotate_and_push(t_stacks *stacks, void (*rotate)(t_stacks *stacks, t_chunk *chunk), int i)
 {
 	while (i--)
-		rotate(stacks);
-	pb(stacks);
+		rotate(stacks, 0);
+	pb(stacks, 0);
 	// printStackB(*stacks);
 }
 
-void	rotate_and_push2(t_stacks *stacks, void (*rotate)(t_stacks *stacks), int i)
+void	rotate_and_push2(t_stacks *stacks, void (*rotate)(t_stacks *stacks, t_chunk *chunk), int i)
 {
 	while (i--)
-		rotate(stacks);
-	pa(stacks);
+		rotate(stacks, 0);
+	pa(stacks, 0);
 }
 
 void	scan_stack(t_stacks *stacks, t_sortvars *svars)
