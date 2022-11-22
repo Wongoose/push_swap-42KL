@@ -18,13 +18,9 @@ int	push_above_median(t_stacks *stacks, int median, t_chunk *chunk)
 	while (1)
 	{
 		i = 0;
-		while (!(stacks->stkb_arr[i] > median))
-		{
-			if (i == chunk->size - 1)
-				break ;
+		while (!(stacks->stkb_arr[i] > median) && i < chunk->size)
 			i++;
-		}
-		if (i == chunk->size - 1)
+		if (i == chunk->size)
 			break ;
 		rotate_num += i;
 		while (i--)
@@ -48,22 +44,18 @@ int	push_below_median(t_stacks *stacks, int median, t_chunk *chunk)
 	while (1)
 	{
 		i = 0;
-		while (!(stacks->stkb_arr[i] < median))
-		{
-			if (i == chunk->size - 1)
-				break ;
+		while (!(stacks->stka_arr[i] < median) && i < chunk->size)
 			i++;
-		}
-		if (i == chunk->size - 1)
+		if (i == chunk->size)
 			break ;
 		rotate_num += i;
 		while (i--)
-			rb(stacks, chunk);
-		pa(stacks, chunk);
+			ra(stacks, chunk);
+		pb(stacks, chunk);
 		count++;
 	}
 	while (rotate_num--)
-		rrb(stacks, chunk);
+		rra(stacks, chunk);
 	return (count);
 }
 

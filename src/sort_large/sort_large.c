@@ -3,22 +3,25 @@
 // NEXT create sort 3 and 5 for chunks
 // USE pointer to chunks for all functions
 // ADD chunk size decrement only
-void	quicksort_a(t_stacks *stacks, t_chunk *chunk, t_sortvars *svars)
+void	mediansort_a(t_stacks *stacks, t_chunk *chunk, t_sortvars *svars)
 {
 	int		median;
 	int		size;
+	int i;
 
 	while (1)
 	{
+		i = 0;
 		chunk = svars->stka_chunks->curr_chunk;
+		while (i < chunk->size)
+		{
+			printf("%d, ", stacks->stka_arr[i]);
+			i++;
+		}
 		if (chunk_sorted(stacks->stka_arr, chunk, ASC) || chunk->size == 1)
 			return ;
 		if (chunk->size == 2)
 			sa(stacks);
-		else if (chunk->size == 3)
-			sort_3(stacks, STK_A);
-		else if (chunk->size <= 5)
-			sort_5(stacks);
 		else
 		{
 			median = find_chunk_median(stacks->stka_arr, svars->stka_chunks->curr_chunk);
@@ -28,7 +31,7 @@ void	quicksort_a(t_stacks *stacks, t_chunk *chunk, t_sortvars *svars)
 	}
 }
 
-void	quicksort_b(t_stacks *stacks, t_chunk *chunk, t_sortvars *svars)
+void	mediansort_b(t_stacks *stacks, t_chunk *chunk, t_sortvars *svars)
 {
 	int	median;
 	int	size;
@@ -40,7 +43,7 @@ void	quicksort_b(t_stacks *stacks, t_chunk *chunk, t_sortvars *svars)
 		median = find_chunk_median(stacks->stkb_arr, chunk);
 		size = push_above_median(stacks, median, chunk);
 	}
-	new_chunk(&svars->stka_chunks, size);
+	svars->stka_chunks = new_chunk(&svars->stka_chunks, size);
 }
 
 // initializes the first set of chunks in B
@@ -63,8 +66,8 @@ void	init_bchunks(t_stacks *stacks, t_sortvars *svars)
 }
 
 // 1. Check if curr chunk B is sorted
-// 2. quicksort B (find median and push larger than) - gen new chunk in A
-// 3. Check if need quicksort A (check by length, median) - gen new chunk in B
+// 2. mediansort B (find median and push larger than) - gen new chunk in A
+// 3. Check if need mediansort A (check by length, median) - gen new chunk in B
 // 4. If chunk in A len <= 5 (sort_3, sort_5)
 // 5. Chunk A settled, loop to STEP 1
 // 6. Until curr chunk len == 0 (cannot find startnum/endnum)
@@ -73,20 +76,20 @@ void    sort_large(t_stacks *stacks)
 {
 	t_sortvars svars;
 	t_chunk		*chunk;
-	int			i;
-	i = 3;
 
 	init_bchunks(stacks, &svars);
 	sort_3(stacks, STK_A);
 	printChunksA(*stacks, svars.stka_chunks);
 	printChunksB(*stacks, svars.stkb_chunks);
-	while (i--)
+	while (svars.stkb_chunks)
 	{
 		chunk = svars.stkb_chunks->curr_chunk;
-		quicksort_b(stacks, chunk, &svars);
+		mediansort_b(stacks, chunk, &svars);
 		printChunksA(*stacks, svars.stka_chunks);
 		printChunksB(*stacks, svars.stkb_chunks);
-		// quicksort_a(stacks, chunk, &svars);
+		mediansort_a(stacks, chunk, &svars);
+		printChunksA(*stacks, svars.stka_chunks);
+		printChunksB(*stacks, svars.stkb_chunks);
 		if (svars.stkb_chunks->curr_chunk->size == 0)
 			svars.stkb_chunks = svars.stkb_chunks->next;
 	}

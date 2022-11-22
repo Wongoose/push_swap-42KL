@@ -12,7 +12,7 @@ void sort_3a(t_stacks *stacks)
 
     if (num1 > num2 && num2 < num3 && num3 > num1)
         sa(stacks);
-    else if ((num1 > num2 && num2 > num3) && num3 < num1)
+    else if (num1 > num2 && num2 > num3 && num3 < num1)
     {
         sa(stacks);
         rra(stacks, 0);

@@ -6,7 +6,6 @@ t_list	*new_chunk(t_list **stk_chunks, int size)
 
 	chunk = malloc(sizeof(t_chunk));
 	chunk->size = size;
-	printf("Chunk size: %d\n", chunk->size);
 	ft_lstadd_front(stk_chunks, ft_lstnew(chunk));
 	return (*stk_chunks);
 }
