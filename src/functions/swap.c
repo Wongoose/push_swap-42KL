@@ -1,23 +1,23 @@
 #include "../../push_swap.h"
 
-void    sa(t_stacks *stacks)
+void    sa(t_sortvars *svars)
 {
-    ft_putstr_fd("sa\n", stacks->log_fd);
-    if (stacks->stka_len <= 1)
+    ft_putstr_fd("sa\n", svars->log_fd);
+    if (svars->stka_len <= 1)
         return ;
-    ft_swap(&stacks->stka_arr[0], &stacks->stka_arr[1]);
+    ft_swap(&svars->stka_arr[0], &svars->stka_arr[1]);
 }
 
-void    sb(t_stacks *stacks)
+void    sb(t_sortvars *svars)
 {
-    ft_putstr_fd("sb\n", stacks->log_fd);
-    if (stacks->stkb_len <= 1)
+    ft_putstr_fd("sb\n", svars->log_fd);
+    if (svars->stkb_len <= 1)
         return ;
-    ft_swap(&stacks->stkb_arr[0], &stacks->stkb_arr[1]);
+    ft_swap(&svars->stkb_arr[0], &svars->stkb_arr[1]);
 }
 
-void    ss(t_stacks *stacks)
+void    ss(t_sortvars *svars)
 {
-    sa(stacks);
-    sb(stacks);
+    sa(svars);
+    sb(svars);
 }

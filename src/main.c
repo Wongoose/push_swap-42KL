@@ -1,22 +1,22 @@
 #include "../push_swap.h"
 
-void	init_push_swap(t_stacks *stacks, int argc)
+void	init_push_swap(t_sortvars *svars, int argc)
 {
-	stacks->stka_len = argc - 1;
-	stacks->stka_arr = malloc(sizeof(int) * stacks->stka_len);
-	if (!stacks->stka_arr)
+	svars->stka_len = argc - 1;
+	svars->stka_arr = malloc(sizeof(int) * svars->stka_len);
+	if (!svars->stka_arr)
 		err_exit("Failed to allocate array in Stack A!");
-	stacks->stkb_len = 0;
-	stacks->stkb_arr = malloc(sizeof(int) * stacks->stka_len);
-	if (!stacks->stkb_arr)
+	svars->stkb_len = 0;
+	svars->stkb_arr = malloc(sizeof(int) * svars->stka_len);
+	if (!svars->stkb_arr)
 		err_exit("Failed to allocate array in Stack B!");
-	printf("Start of pointer B is: (%p)\n", stacks->stkb_arr);
-	stacks->stkb_arr += (argc - 2); // argc - 1 is the number of integers, then -1 again for offset
-	printf("End of pointer B is: (%p)\n", stacks->stkb_arr);
-	stacks->log_fd = open("log", O_RDWR);
+	printf("Start of pointer B is: (%p)\n", svars->stkb_arr);
+	svars->stkb_arr += (argc - 2); // argc - 1 is the number of integers, then -1 again for offset
+	printf("End of pointer B is: (%p)\n", svars->stkb_arr);
+	svars->log_fd = open("log", O_RDWR);
 }
 
-void	validate_input(t_stacks *stacks, char **argv)
+void	validate_input(t_sortvars *svars, char **argv)
 {
 	int		i;
 	long	num;
@@ -28,37 +28,37 @@ void	validate_input(t_stacks *stacks, char **argv)
 		num = ft_atoi(argv[i]);
 		if (!valid_digits(argv[i]))
 			putstr_err("Invalid input: Found invalid character!");
-		if (!valid_duplicate(stacks, num, i))
+		if (!valid_duplicate(svars, num, i))
 			putstr_err("Invalid input: Found duplicate number!");
 		if (num > INT_MAX || num < INT_MIN)
 			putstr_err("Invalid input: A number is out of integer range!");
-		stacks->stka_arr[i] = num;
+		svars->stka_arr[i] = num;
 		i++;
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	t_stacks	stacks;
+	t_sortvars	svars;
 
 	if (argc < 2)
 		putstr_err("Invalid number of arguments!");
-	init_push_swap(&stacks, argc);
-	validate_input(&stacks, argv);
-	printStackA(stacks);
-	printStackB(stacks);
-	// REMEMBER to free when end
-	if (is_sorted(stacks))
+	init_push_swap(&svars, argc);
+	validate_input(&svars, argv);
+	printStackA(svars);
+	printStackB(svars);
+	if (is_sorted(svars))
 		return (0);
-	if (stacks.stka_len == 2)
-		sa(&stacks);
-	else if (stacks.stka_len == 3)
-		sort_3(&stacks, STK_A);
-	else if (stacks.stka_len <= 5)
-		sort_5(&stacks);
-	else if (stacks.stka_len > 5)
-		sort_large(&stacks);
-	printStackA(stacks);
-	printStackB(stacks);
+	if (svars.stka_len == 2)
+		sa(&svars);
+	else if (svars.stka_len == 3)
+		sort_3(&svars);
+	else if (svars.stka_len <= 5)
+		sort_5(&svars);
+	else if (svars.stka_len > 5)
+		sort_large(&svars);
+	printStackA(svars);
+	printStackB(svars);
+	// REMEMBER to free when end
 	return (0);
 }

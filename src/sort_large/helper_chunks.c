@@ -38,20 +38,6 @@ int	chunk_sorted(int *stk_arr, t_chunk *chunk, t_sortorder order)
 	return (1);
 }
 
-int	push_chunk(t_stacks *stacks, t_chunk *chunk)
-{
-	int	count;
-
-	count = 0;
-	while (chunk->size != 0)
-	{
-		pa(stacks, chunk);
-		count++;
-	}
-	return (count);
-
-}
-
 // SECURE BIG NUMBERS IN SUM
 int find_chunk_median(int *stk_arr, t_chunk *chunk)
 {

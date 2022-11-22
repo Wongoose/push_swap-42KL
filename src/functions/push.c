@@ -1,63 +1,63 @@
 #include "../../push_swap.h"
 
-// void    pa(t_stacks *stacks)
+// void    pa(t_sortvars *svars)
 // {
-//     ft_putstr_fd("pa\n", stacks->log_fd);
-//     if (stacks->stkb_len == 0)
+//     ft_putstr_fd("pa\n", svars->log_fd);
+//     if (svars->stkb_len == 0)
 //         return ;
-//     if (stacks->stka_len != 0)
-//         stacks->stka_arr -= 1;
-//     stacks->stka_arr[0] = stacks->stkb_arr[0];
-//     stacks->stkb_arr[0] = 0;
-//     stacks->stka_len++;
-//     stacks->stkb_len--;
-//     if (stacks->stkb_len != 0)
-//         stacks->stkb_arr += 1;
+//     if (svars->stka_len != 0)
+//         svars->stka_arr -= 1;
+//     svars->stka_arr[0] = svars->stkb_arr[0];
+//     svars->stkb_arr[0] = 0;
+//     svars->stka_len++;
+//     svars->stkb_len--;
+//     if (svars->stkb_len != 0)
+//         svars->stkb_arr += 1;
 // }
 
-// void    pb(t_stacks *stacks)
+// void    pb(t_sortvars *svars)
 // {
-//     ft_putstr_fd("pb\n", stacks->log_fd);
-//     if (stacks->stka_len == 0)
+//     ft_putstr_fd("pb\n", svars->log_fd);
+//     if (svars->stka_len == 0)
 //         return ;
-//     if (stacks->stkb_len != 0)
-//         stacks->stkb_arr -= 1;
-//     stacks->stkb_arr[0] = stacks->stka_arr[0];
-//     stacks->stka_arr[0] = 0;
-//     stacks->stkb_len++;
-//     stacks->stka_len--;
-//     if (stacks->stka_len != 0)
-//         stacks->stka_arr += 1;
+//     if (svars->stkb_len != 0)
+//         svars->stkb_arr -= 1;
+//     svars->stkb_arr[0] = svars->stka_arr[0];
+//     svars->stka_arr[0] = 0;
+//     svars->stkb_len++;
+//     svars->stka_len--;
+//     if (svars->stka_len != 0)
+//         svars->stka_arr += 1;
 // }
 
-void    pa(t_stacks *stacks, t_chunk *chunk)
+void    pa(t_sortvars *svars, t_chunk *chunk)
 {
-    ft_putstr_fd("pa\n", stacks->log_fd);
-    if (stacks->stkb_len == 0)
+    ft_putstr_fd("pa\n", svars->log_fd);
+    if (svars->stkb_len == 0)
         return ;
-    if (stacks->stka_len != 0)
-        stacks->stka_arr -= 1;
-    stacks->stka_arr[0] = stacks->stkb_arr[0];
-    stacks->stkb_arr[0] = 0;
-    stacks->stka_len++;
-    stacks->stkb_len--;
-    if (stacks->stkb_len != 0)
-        stacks->stkb_arr += 1;
+    if (svars->stka_len != 0)
+        svars->stka_arr -= 1;
+    svars->stka_arr[0] = svars->stkb_arr[0];
+    svars->stkb_arr[0] = 0;
+    svars->stka_len++;
+    svars->stkb_len--;
+    if (svars->stkb_len != 0)
+        svars->stkb_arr += 1;
     chunk->size--;
 }
 
-void    pb(t_stacks *stacks, t_chunk *chunk)
+void    pb(t_sortvars *svars, t_chunk *chunk)
 {
-    ft_putstr_fd("pb\n", stacks->log_fd);
-    if (stacks->stka_len == 0)
+    ft_putstr_fd("pb\n", svars->log_fd);
+    if (svars->stka_len == 0)
         return ;
-    if (stacks->stkb_len != 0)
-        stacks->stkb_arr -= 1;
-    stacks->stkb_arr[0] = stacks->stka_arr[0];
-    stacks->stka_arr[0] = 0;
-    stacks->stkb_len++;
-    stacks->stka_len--;
-    if (stacks->stka_len != 0)
-        stacks->stka_arr += 1;
+    if (svars->stkb_len != 0)
+        svars->stkb_arr -= 1;
+    svars->stkb_arr[0] = svars->stka_arr[0];
+    svars->stka_arr[0] = 0;
+    svars->stkb_len++;
+    svars->stka_len--;
+    if (svars->stka_len != 0)
+        svars->stka_arr += 1;
     chunk->size--;
 }
