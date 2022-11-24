@@ -37,6 +37,12 @@ void	validate_input(t_sortvars *svars, char **argv)
 	}
 }
 
+// NEXT: Fix edge cases of finding median
+// Clear printfs
+// SHow operations in terminal
+// Double confirm validation
+// Fix leaks
+// Add comments for explanation
 int	main(int argc, char **argv)
 {
 	t_sortvars	svars;
