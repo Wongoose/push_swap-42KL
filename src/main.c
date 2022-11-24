@@ -45,8 +45,10 @@ int	main(int argc, char **argv)
 		putstr_err("Invalid number of arguments!");
 	init_push_swap(&svars, argc);
 	validate_input(&svars, argv);
+	printf("Validated input");
 	printStackA(svars);
 	printStackB(svars);
+	printf("Printed 1st stacks");
 	if (is_sorted(svars))
 		return (0);
 	if (svars.stka_len == 2)

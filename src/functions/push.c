@@ -43,7 +43,8 @@ void    pa(t_sortvars *svars, t_chunk *chunk)
     svars->stkb_len--;
     if (svars->stkb_len != 0)
         svars->stkb_arr += 1;
-    chunk->size--;
+    if (chunk)
+        chunk->size--;
 }
 
 void    pb(t_sortvars *svars, t_chunk *chunk)
@@ -59,5 +60,6 @@ void    pb(t_sortvars *svars, t_chunk *chunk)
     svars->stka_len--;
     if (svars->stka_len != 0)
         svars->stka_arr += 1;
-    chunk->size--;
+    if (chunk)
+        chunk->size--;
 }
