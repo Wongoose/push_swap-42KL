@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helper_chunks.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/29 16:22:24 by zwong             #+#    #+#             */
+/*   Updated: 2022/11/29 16:25:10 by zwong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../push_swap.h"
 
+// Creates a new chunk in link list with given size
 t_list	*new_chunk(t_list **stk_chunks, int size)
 {
 	t_chunk	*chunk;
@@ -10,6 +23,7 @@ t_list	*new_chunk(t_list **stk_chunks, int size)
 	return (*stk_chunks);
 }
 
+// Loops through chunk to see if it's sorted take input (ASCENDING, DESCENDING)
 int	chunk_sorted(int *stk_arr, t_chunk *chunk, t_sortorder order)
 {
 	int	i;
@@ -38,23 +52,25 @@ int	chunk_sorted(int *stk_arr, t_chunk *chunk, t_sortorder order)
 	return (1);
 }
 
-// SECURE BIG NUMBERS IN SUM
-int find_chunk_median(int *stk_arr, t_chunk *chunk)
+// SECURE BIG NUMBERS IN SUM (new algorithm)
+// 1. Sum all numbers in chunk
+// 2. Divide by chunk size to find exact median
+// Then,
+// Loop again, find smallest difference to determine median num in chunk
+int	find_chunk_median(int *stk_arr, t_chunk *chunk)
 {
-    int     i;
+	int		i;
 	int		med_i;
-	float	median;
-	float	diff;
-    double	sum;
-	// beware of big numbers sum
+	double	median;
+	double	diff;
+	double	sum;
+
 	i = 0;
 	sum = 0;
-    while (i < chunk->size)
-	{
-        sum += stk_arr[i];
-		i++;
-	}
+	while (i < chunk->size)
+		sum += ((double)stk_arr[i++] / 2147483647);
 	median = sum / chunk->size;
+	median *= 2147483647;
 	i = 0;
 	diff = ft_topositive(stk_arr[i] - median);
 	while (i < chunk->size)
@@ -66,5 +82,5 @@ int find_chunk_median(int *stk_arr, t_chunk *chunk)
 		}
 		i++;
 	}
-	return (stk_arr[med_i]);	
+	return (stk_arr[med_i]);
 }

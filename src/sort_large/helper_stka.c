@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helper_stka.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/29 16:27:10 by zwong             #+#    #+#             */
+/*   Updated: 2022/11/29 16:44:15 by zwong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../push_swap.h"
 
-int	push_below_median(t_sortvars *svars, int median, t_chunk *chunk) 
+int	push_below_median(t_sortvars *svars, int median, t_chunk *chunk)
 {
 	int	i;
 	int	count;
@@ -26,10 +38,17 @@ int	push_below_median(t_sortvars *svars, int median, t_chunk *chunk)
 	return (count);
 }
 
-static void	rotate_and_push(t_sortvars *svars, void (*rotate)(t_sortvars *svars, t_chunk *chunk), int i, t_chunk *chunk)
+static void	ra_and_pb(t_sortvars *svars, int i, t_chunk *chunk)
 {
 	while (i--)
-		rotate(svars, 0);
+		ra(svars, 0);
+	pb(svars, chunk);
+}
+
+static void	rra_and_pb(t_sortvars *svars, int i, t_chunk *chunk)
+{
+	while (i--)
+		rra(svars, 0);
 	pb(svars, chunk);
 }
 
@@ -44,27 +63,18 @@ int	push_below_median_end(t_sortvars *svars, int median, t_chunk *chunk)
 	{
 		start = 0;
 		end = svars->stka_len - 1;
-		while (!(svars->stka_arr[start] < median) && start < svars->stka_len / 2)
+		while (!(svars->stka_arr[start] < median)
+			&& start < svars->stka_len / 2)
 			start++;
-		if (start >= svars->stka_len / 2)
-			start = -1;
-		while (!(svars->stka_arr[end] < median) && end >= svars->stka_len / 2 )
+		while (!(svars->stka_arr[end] < median) && end >= svars->stka_len / 2)
 			end--;
-		if (end < svars->stka_len / 2)
-			end = -1;
-		if (start == -1 && end == -1)
-				break ;
-		if (start == -1 || end == -1)
-		{
-			if (start != -1)
-				rotate_and_push(svars, ra, start, chunk);
-			else
-				rotate_and_push(svars, rra, svars->stka_len - end, chunk);
-		}
-		else if (start < (svars->stka_len - 1) - end)
-			rotate_and_push(svars, ra, start, chunk);
+		if (start >= svars->stka_len / 2 && end < svars->stka_len / 2)
+			break ;
+		else if (start < (svars->stka_len - 1) - end
+			&& start < svars->stka_len / 2)
+			ra_and_pb(svars, start, chunk);
 		else
-			rotate_and_push(svars, rra, svars->stka_len - end, chunk);
+			rra_and_pb(svars, svars->stka_len - end, chunk);
 		count++;
 	}
 	return (count);

@@ -39,17 +39,17 @@ typedef struct  s_sortvars {
 }   t_sortvars;
 
 int	    valid_duplicate(t_sortvars *svars, int num, int i);
-int	    valid_digits(char *num);
+int	    valid_digits(const char *num);
 int	    is_sorted(t_sortvars svars);
-void	printStackA(t_sortvars svars);
-void	printStackB(t_sortvars svars);
+void	print_stacka(t_sortvars svars);
+void	print_stackb(t_sortvars svars);
 void	printChunks(t_chunk *chunks);
-void	printChunksB(t_sortvars svars, t_list *bchunks);
-void	printChunksA(t_sortvars svars, t_list *achunks);
+void	print_chunksb(t_sortvars svars, t_list *bchunks);
+void	print_chunksa(t_sortvars svars, t_list *achunks);
 void    err_exit(char *err);
 void    putstr_err(char *err);
-void    sa(t_sortvars *svars);
-void    sb(t_sortvars *svars);
+void    sa(t_sortvars *svars, int print);
+void    sb(t_sortvars *svars, int print);
 void    ss(t_sortvars *svars);
 void    ra(t_sortvars *svars, t_chunk *chunk);
 void    rb(t_sortvars *svars, t_chunk *chunk);

@@ -4,7 +4,7 @@ CFLAGS	= -Wall -Wextra -Werror
 
 SRCS	= main.c utils/error.c utils/validation.c utils/display.c \
 	functions/swap.c functions/rotate.c functions/rev_rotate.c functions/push.c functions/insert.c\
-	sort_small/sort_3.c sort_small/sort_5.c sort_small/sort_100.c \
+	sort_small/sort_3.c sort_small/sort_5.c \
 	sort_large/sort_large.c sort_large/helper_chunks.c sort_large/helper_stka.c sort_large/helper_stkb.c
 SRCS_P	= ${addprefix src/, ${SRCS}}
 OBJS	= ${SRCS_P:.c=.o}

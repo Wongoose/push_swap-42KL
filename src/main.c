@@ -1,5 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/29 16:04:30 by zwong             #+#    #+#             */
+/*   Updated: 2022/11/29 16:09:08 by zwong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
+// initialize values of sortvars (svars)
+// Allocate space of Stack A and B array based on input length (argc)
+// line 16: "svars->stkb_arr += (argc - 2)" - Moves stack B ptr to the end
 void	init_push_swap(t_sortvars *svars, int argc)
 {
 	svars->stka_len = argc - 1;
@@ -10,12 +25,14 @@ void	init_push_swap(t_sortvars *svars, int argc)
 	svars->stkb_arr = malloc(sizeof(int) * svars->stka_len);
 	if (!svars->stkb_arr)
 		err_exit("Failed to allocate array in Stack B!");
-	printf("Start of pointer B is: (%p)\n", svars->stkb_arr);
-	svars->stkb_arr += (argc - 2); // argc - 1 is the number of integers, then -1 again for offset
-	printf("End of pointer B is: (%p)\n", svars->stkb_arr);
+	svars->stkb_arr += (argc - 2);
 	svars->log_fd = open("log", O_RDWR);
 }
 
+// use "long" for num to accept large input but will be validated
+// argv++ to neglect program name (convenient)
+// Loops through argv strings for validation
+// if all 3 validaiton passed below, then add num to malloced Stack A
 void	validate_input(t_sortvars *svars, char **argv)
 {
 	int		i;
@@ -37,8 +54,6 @@ void	validate_input(t_sortvars *svars, char **argv)
 	}
 }
 
-// NEXT: Fix edge cases of finding median
-// Clear printfs
 // SHow operations in terminal
 // Double confirm validation
 // Fix leaks
@@ -51,22 +66,14 @@ int	main(int argc, char **argv)
 		putstr_err("Invalid number of arguments!");
 	init_push_swap(&svars, argc);
 	validate_input(&svars, argv);
-	printf("Validated input");
-	printStackA(svars);
-	printStackB(svars);
-	printf("Printed 1st stacks");
 	if (is_sorted(svars))
 		return (0);
-	if (svars.stka_len == 2)
-		sa(&svars);
-	else if (svars.stka_len == 3)
+	if (svars.stka_len <= 3)
 		sort_3(&svars);
 	else if (svars.stka_len <= 5)
 		sort_5(&svars);
 	else if (svars.stka_len > 5)
 		sort_large(&svars);
-	printStackA(svars);
-	printStackB(svars);
-	// REMEMBER to free when end
+	print_stacka(svars);
 	return (0);
 }
