@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:53:19 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/01 21:31:06 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/01 21:49:58 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ int		push_above_median(t_sortvars *svars, int median, t_chunk *chunk);
 int		push_below_median(t_sortvars *svars, int median, t_chunk *chunk);
 int		push_below_median_end(t_sortvars *svars, int median, t_chunk *chunk);
 void	free_svars(t_sortvars *svars);
-void	free_arr(t_sortvars *svars);
+void	free_substr(char **substr);
 
 #endif
