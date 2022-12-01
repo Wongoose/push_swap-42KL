@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:04:30 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/01 13:04:00 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/01 13:21:34 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // initialize values of sortvars (svars)
 // Allocate space of Stack A and B array based on input length (argc)
 // line 16: "svars->stkb_arr += (argc - 2)" - Moves stack B ptr to the end
+// svars->log_fd = open("log", O_RDWR);
 void	init_push_swap(t_sortvars *svars, int argc)
 {
 	svars->stka_len = argc - 1;
@@ -26,9 +27,10 @@ void	init_push_swap(t_sortvars *svars, int argc)
 	if (!svars->stkb_arr)
 		err_exit("Failed to allocate array in Stack B!");
 	svars->stkb_arr += (argc - 2);
-	svars->log_fd = open("log", O_RDWR);
+	svars->log_fd = 1;
 }
 
+// VALIDATE STRING AS CHECKER
 // use "long" for num to accept large input but will be validated
 // argv++ to neglect program name (convenient)
 // Loops through argv strings for validation
@@ -54,9 +56,7 @@ void	validate_input(t_sortvars *svars, char **argv)
 	}
 }
 
-// Fix leaks
 // SHow operations in terminal
-// Clean printf
 int	main(int argc, char **argv)
 {
 	t_sortvars	svars;
@@ -74,6 +74,5 @@ int	main(int argc, char **argv)
 	else if (svars.stka_len > 5)
 		sort_large(&svars);
 	free_svars(&svars);
-	system("leaks push_swap");
 	return (0);
 }
