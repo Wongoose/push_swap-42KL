@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:04:30 by zwong             #+#    #+#             */
-/*   Updated: 2022/11/29 16:09:08 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/01 13:04:00 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,9 @@ void	validate_input(t_sortvars *svars, char **argv)
 	}
 }
 
-// SHow operations in terminal
-// Double confirm validation
 // Fix leaks
-// Add comments for explanation
+// SHow operations in terminal
+// Clean printf
 int	main(int argc, char **argv)
 {
 	t_sortvars	svars;
@@ -74,6 +73,7 @@ int	main(int argc, char **argv)
 		sort_5(&svars);
 	else if (svars.stka_len > 5)
 		sort_large(&svars);
-	print_stacka(svars);
+	free_svars(&svars);
+	system("leaks push_swap");
 	return (0);
 }

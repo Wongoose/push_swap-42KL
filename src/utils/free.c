@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 16:06:46 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/01 13:03:46 by zwong            ###   ########.fr       */
+/*   Created: 2022/12/01 13:05:13 by zwong             #+#    #+#             */
+/*   Updated: 2022/12/01 13:05:45 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-void	err_exit(char *err)
+static void	del_chunk(void *chunk)
 {
-	ft_putstr_fd("Error\n", 2);
-	perror(err);
-	exit(1);
+	free(chunk);
 }
 
-void	putstr_err(char *err)
+void	free_svars(t_sortvars *svars)
 {
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(err, 2);
-	exit(1);
+	free(svars->stka_arr);
+	svars->stkb_arr -= (svars->stka_len - 1);
+	free(svars->stkb_arr);
+	ft_lstclear(&svars->stka_chunks, del_chunk);
+	ft_lstclear(&svars->stkb_chunks, del_chunk);
 }

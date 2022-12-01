@@ -6,21 +6,20 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:22:24 by zwong             #+#    #+#             */
-/*   Updated: 2022/11/29 16:25:10 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/01 13:04:41 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
 // Creates a new chunk in link list with given size
-t_list	*new_chunk(t_list **stk_chunks, int size)
+void	new_chunk(t_list **stk_chunks, int size)
 {
 	t_chunk	*chunk;
 
 	chunk = malloc(sizeof(t_chunk));
 	chunk->size = size;
 	ft_lstadd_front(stk_chunks, ft_lstnew(chunk));
-	return (*stk_chunks);
 }
 
 // Loops through chunk to see if it's sorted take input (ASCENDING, DESCENDING)
@@ -68,9 +67,9 @@ int	find_chunk_median(int *stk_arr, t_chunk *chunk)
 	i = 0;
 	sum = 0;
 	while (i < chunk->size)
-		sum += ((double)stk_arr[i++] / 2147483647);
+		sum += ((double)stk_arr[i++] / INT_MAX);
 	median = sum / chunk->size;
-	median *= 2147483647;
+	median *= INT_MAX;
 	i = 0;
 	diff = ft_topositive(stk_arr[i] - median);
 	while (i < chunk->size)

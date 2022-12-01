@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:36:42 by zwong             #+#    #+#             */
-/*   Updated: 2022/11/29 16:40:04 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/01 13:00:54 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	mediansort_a(t_sortvars *svars)
 		{
 			median = find_chunk_median(svars->stka_arr, chunk);
 			size = push_below_median(svars, median, chunk);
-			svars->stkb_chunks = new_chunk(&svars->stkb_chunks, size);
+			new_chunk(&svars->stkb_chunks, size);
 		}
 	}
 }
@@ -57,7 +57,7 @@ void	mediansort_b(t_sortvars *svars, t_chunk *chunk)
 		median = find_chunk_median(svars->stkb_arr, chunk);
 		size = push_above_median(svars, median, chunk);
 	}
-	svars->stka_chunks = new_chunk(&svars->stka_chunks, size);
+	new_chunk(&svars->stka_chunks, size);
 }
 
 // initializes the first set of chunks in B
@@ -97,6 +97,10 @@ void	sort_large(t_sortvars *svars)
 		mediansort_b(svars, chunk);
 		mediansort_a(svars);
 		if (svars->stkb_chunks->curr_chunk->size == 0)
+		{
+			free(chunk);
+			free(svars->stkb_chunks);
 			svars->stkb_chunks = svars->stkb_chunks->next;
+		}
 	}
 }

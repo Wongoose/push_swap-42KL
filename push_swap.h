@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:53:19 by zwong             #+#    #+#             */
-/*   Updated: 2022/11/29 16:57:38 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/01 13:02:35 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,14 @@ void	sort_3(t_sortvars *svars);
 void	sort_5(t_sortvars *svars);
 void	sort_100(t_sortvars *svars);
 void	sort_large(t_sortvars *svars);
-t_list	*new_chunk(t_list **stk_chunks, int count);
+void	new_chunk(t_list **stk_chunks, int count);
 int		find_chunk_median(int *stk_arr, t_chunk *chunk);
 int		chunk_sorted(int *stk_arr, t_chunk *chunk, t_sortorder order);
 int		push_chunk(t_sortvars *svars, t_chunk *chunk);
 int		push_above_median(t_sortvars *svars, int median, t_chunk *chunk);
 int		push_below_median(t_sortvars *svars, int median, t_chunk *chunk);
 int		push_below_median_end(t_sortvars *svars, int median, t_chunk *chunk);
-int		find_startnum(t_sortvars *svars, int startnum, t_stktype stack);
+void	free_svars(t_sortvars *svars);
+void	free_arr(t_sortvars *svars);
 
 #endif
