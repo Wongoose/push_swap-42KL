@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:53:19 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/01 13:02:35 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/01 21:31:06 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <limits.h>
 # include <fcntl.h>
 # include "libft/libft.h"
+# include "ft_printf/includes/ft_printf.h"
 
 typedef enum e_stktype {
 	STK_A = 0,

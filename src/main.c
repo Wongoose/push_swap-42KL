@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:04:30 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/01 13:21:34 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/01 21:33:29 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	init_push_swap(t_sortvars *svars, int argc)
 	svars->log_fd = 1;
 }
 
-// VALIDATE STRING AS CHECKER
 // use "long" for num to accept large input but will be validated
 // argv++ to neglect program name (convenient)
 // Loops through argv strings for validation
@@ -57,6 +56,8 @@ void	validate_input(t_sortvars *svars, char **argv)
 }
 
 // SHow operations in terminal
+// VALIDATE STRING LIKE CHECKER
+// Create checker BONUS
 int	main(int argc, char **argv)
 {
 	t_sortvars	svars;

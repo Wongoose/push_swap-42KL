@@ -11,21 +11,26 @@ OBJS	= ${SRCS_P:.c=.o}
 
 LIBFT_DIR	= libft
 LIBFT_LIB	= libft.a
+PRINTF_DIR	= ft_printf
+PRINTF_LIB	= libftprintf.a
 
 all:	${NAME}
 
 ${LIBFT_LIB}:
 	@make bonus -C ${LIBFT_DIR}
+	@make -C ${PRINTF_DIR}
 
 ${NAME}:	${LIBFT_LIB} ${OBJS}
-	@${CC} ${CFLAGS} ${OBJS} ${LIBFT_DIR}/${LIBFT_LIB} -o ${NAME}
+	@${CC} ${CFLAGS} ${OBJS} ${LIBFT_DIR}/${LIBFT_LIB} ${PRINTF_DIR}/${PRINTF_LIB} -o ${NAME}
 
 clean:
 	@make clean -C ${LIBFT_DIR}
+	@make clean -C ${PRINTF_DIR}
 	@rm -rf ${OBJS}
 
 fclean: clean
 	@make fclean -C ${LIBFT_DIR}
+	@make fclean -C ${PRINTF_DIR}
 	@rm -rf ${NAME}
 
 re: fclean all
