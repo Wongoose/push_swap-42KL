@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 13:21:15 by zwong             #+#    #+#             */
-/*   Updated: 2022/08/16 13:44:14 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/06 17:42:20 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (char_count);
 }
-
-// int main()
-// {
-//     int	count;
-
-// 	count = 0;
-//     count = ft_printf(" %p %p ", 0, NULL);
-// 	// count = ft_printf("hello %p%%, %s", &name, " world!");
-// 	printf("\nMy char count is: %d\n", count);
-//     count = printf(" %p %p ", 0, NULL);
-// 	// count = printf("hello %p%%, %s", &name, " world!");
-// 	printf("\nSystem char count is: %d\n", count);
-//     return (0);
-// }
