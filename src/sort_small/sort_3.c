@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:12:40 by zwong             #+#    #+#             */
-/*   Updated: 2022/11/29 16:26:08 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/02 14:53:52 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	sort_2(t_sortvars *svars)
 		return (1);
 	if (svars->stka_len == 2)
 	{
-		sa(svars, 1);
+		sa(svars, TRUE);
 		return (1);
 	}
 	return (0);
@@ -38,19 +38,19 @@ void	sort_3(t_sortvars *svars)
 	num2 = svars->stka_arr[1];
 	num3 = svars->stka_arr[2];
 	if ((num1 > num2 && num2 < num3) && (num3 > num1))
-		sa(svars, 1);
+		sa(svars, TRUE);
 	else if ((num1 > num2 && num2 > num3) && (num3 < num1))
 	{
-		sa(svars, 1);
-		rra(svars, 0);
+		sa(svars, TRUE);
+		rra(svars, 0, TRUE);
 	}
 	else if ((num1 > num2 && num2 < num3) && (num3 < num1))
-		ra(svars, 0);
+		ra(svars, 0, TRUE);
 	else if ((num1 < num2 && num2 > num3) && (num3 > num1))
 	{
-		sa(svars, 1);
-		ra(svars, 0);
+		sa(svars, TRUE);
+		ra(svars, 0, TRUE);
 	}
 	else if ((num1 < num2 && num2 > num3) && (num3 < num1))
-		rra(svars, 0);
+		rra(svars, 0, TRUE);
 }

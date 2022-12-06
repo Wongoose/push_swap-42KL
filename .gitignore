@@ -6,3 +6,4 @@ build
 push_swap_visualizer
 docs
 checker_Mac
+*.o

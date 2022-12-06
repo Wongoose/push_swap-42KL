@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:27:10 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/01 13:04:13 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/02 14:57:14 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,27 @@ int	push_below_median(t_sortvars *svars, int median, t_chunk *chunk)
 			break ;
 		rotate_num += i;
 		while (i--)
-			ra(svars, chunk);
-		pb(svars, chunk);
+			ra(svars, chunk, TRUE);
+		pb(svars, chunk, TRUE);
 		count++;
 	}
 	while (rotate_num--)
-		rra(svars, chunk);
+		rra(svars, chunk, TRUE);
 	return (count);
 }
 
 static void	ra_and_pb(t_sortvars *svars, int i, t_chunk *chunk)
 {
 	while (i--)
-		ra(svars, 0);
-	pb(svars, chunk);
+		ra(svars, 0, TRUE);
+	pb(svars, chunk, TRUE);
 }
 
 static void	rra_and_pb(t_sortvars *svars, int i, t_chunk *chunk)
 {
 	while (i--)
-		rra(svars, 0);
-	pb(svars, chunk);
+		rra(svars, 0, TRUE);
+	pb(svars, chunk, TRUE);
 }
 
 int	push_below_median_end(t_sortvars *svars, int median, t_chunk *chunk)

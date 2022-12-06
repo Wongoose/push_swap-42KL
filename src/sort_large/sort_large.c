@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:36:42 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/01 13:00:54 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/02 14:57:34 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	mediansort_a(t_sortvars *svars)
 		if (chunk->size == 2)
 		{
 			if (svars->stkb_arr[0] < svars->stkb_arr[1])
-				ss(svars);
+				ss(svars, TRUE);
 			else
-				sa(svars, 1);
+				sa(svars, TRUE);
 		}
 		else
 		{

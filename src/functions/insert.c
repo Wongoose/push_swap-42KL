@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:18:54 by zwong             #+#    #+#             */
-/*   Updated: 2022/11/29 16:19:52 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/02 14:55:48 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ int	insert_limits(t_sortvars *svars, t_stktype type)
 	if (b_num < svars->stka_arr[0])
 	{
 		if (type == STK_A)
-			pa(svars, 0);
+			pa(svars, 0, TRUE);
 		else
-			pb(svars, 0);
+			pb(svars, 0, TRUE);
 		return (1);
 	}
 	else if (b_num > svars->stka_arr[svars->stka_len - 1])
 	{
 		if (type == STK_A)
-			pa(svars, 0);
+			pa(svars, 0, TRUE);
 		else
-			pb(svars, 0);
+			pb(svars, 0, TRUE);
 		if (type == STK_A)
-			ra(svars, 0);
+			ra(svars, 0, TRUE);
 		else
-			rb(svars, 0);
+			rb(svars, 0, TRUE);
 		return (1);
 	}
 	return (0);
@@ -48,21 +48,21 @@ void	insert_front(t_sortvars *svars, int i, t_stktype type)
 	while (count <= i)
 	{
 		if (type == STK_A)
-			ra(svars, 0);
+			ra(svars, 0, TRUE);
 		else
-			rb(svars, 0);
+			rb(svars, 0, TRUE);
 		count++;
 	}
 	if (type == STK_A)
-		pa(svars, 0);
+		pa(svars, 0, TRUE);
 	else
-		pb(svars, 0);
+		pb(svars, 0, TRUE);
 	while (count > 0)
 	{
 		if (type == STK_A)
-			rra(svars, 0);
+			rra(svars, 0, TRUE);
 		else
-			rrb(svars, 0);
+			rrb(svars, 0, TRUE);
 		count--;
 	}
 }
@@ -75,21 +75,21 @@ void	insert_back(t_sortvars *svars, int i, t_stktype type)
 	while (count < svars->stka_len - (i + 1))
 	{
 		if (type == STK_A)
-			rra(svars, 0);
+			rra(svars, 0, TRUE);
 		else
-			rrb(svars, 0);
+			rrb(svars, 0, TRUE);
 		count++;
 	}
 	if (type == STK_A)
-		pa(svars, 0);
+		pa(svars, 0, TRUE);
 	else
-		pb(svars, 0);
+		pb(svars, 0, TRUE);
 	while (count >= 0)
 	{
 		if (type == STK_A)
-			ra(svars, 0);
+			ra(svars, 0, TRUE);
 		else
-			rb(svars, 0);
+			rb(svars, 0, TRUE);
 		count--;
 	}
 }
