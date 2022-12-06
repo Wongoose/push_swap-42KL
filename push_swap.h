@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:53:19 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/06 17:49:32 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/06 18:45:53 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ void	rrb(t_sortvars *svars, t_chunk *chunk, t_bool print);
 void	rrr(t_sortvars *svars, t_chunk *chunk, t_bool print);
 void	pa(t_sortvars *svars, t_chunk *chunk, t_bool print);
 void	pb(t_sortvars *svars, t_chunk *chunk, t_bool print);
-int		insert_limits(t_sortvars *svars, t_stktype type);
-void	insert_front(t_sortvars *svars, int i, t_stktype type);
-void	insert_back(t_sortvars *svars, int i, t_stktype type);
-void	find_and_insert(t_sortvars *svars, t_stktype type, int insert_num);
+int		insert_limits(t_sortvars *svars);
+void	insert_front(t_sortvars *svars, int i);
+void	insert_back(t_sortvars *svars, int i);
+void	find_and_insert(t_sortvars *svars, int num);
 void	sort_3(t_sortvars *svars);
 void	sort_5(t_sortvars *svars);
 void	sort_large(t_sortvars *svars);

@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:17:01 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/02 14:54:39 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/06 18:42:56 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	sort_5(t_sortvars *svars)
 	while (i--)
 		pb(svars, 0, TRUE);
 	sort_3(svars);
-	while (transfer--)
-		find_and_insert(svars, STK_A, svars->stkb_arr[0]);
+	while (svars->stkb_len != 0)
+		find_and_insert(svars, svars->stkb_arr[0]);
 }
