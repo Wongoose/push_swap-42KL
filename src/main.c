@@ -6,13 +6,12 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:04:30 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/06 17:48:32 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/06 18:00:46 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// Must have at least 1 integer input
 // If is_sorted, nothing to do.
 // Either one of these functions:
 // 1. Sort smaller than 3
@@ -22,8 +21,8 @@ int	main(int argc, char **argv)
 {
 	t_sortvars	svars;
 
-	if (argc < 2)
-		putstr_err("Invalid number of arguments!");
+	if (argc == 1)
+		return (0);
 	argv++;
 	init_stacks(&svars, count_inputs(argv));
 	init_validation(&svars, argv);
