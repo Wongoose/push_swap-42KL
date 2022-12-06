@@ -6,13 +6,18 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:04:30 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/06 17:16:53 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/06 17:48:32 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// Create checker BONUS
+// Must have at least 1 integer input
+// If is_sorted, nothing to do.
+// Either one of these functions:
+// 1. Sort smaller than 3
+// 2. Sort smaller than 5
+// 3. Sort larger than 5 with mediansort
 int	main(int argc, char **argv)
 {
 	t_sortvars	svars;

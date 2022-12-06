@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:04:47 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/06 17:24:16 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/06 17:50:43 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	is_sorted(t_sortvars svars)
 	return (1);
 }
 
+// Loops through the input string
+// if all of it is empty spaces ' ' then return TRUE
 t_bool	is_empty(char *str)
 {
 	int	i;

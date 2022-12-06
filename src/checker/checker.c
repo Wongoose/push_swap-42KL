@@ -6,14 +6,15 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:39:23 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/06 17:37:27 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/06 17:53:40 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 #include "../../gnl/get_next_line.h"
 
-void	dispatch_command(char *cmd, t_sortvars *svars)
+// Give yourself 30s, if you cannot understand this, I have no comment
+void	run_command(char *cmd, t_sortvars *svars)
 {
 	if (!ft_strncmp(cmd, "sa\n", 3))
 		sa(svars, FALSE);
@@ -41,14 +42,17 @@ void	dispatch_command(char *cmd, t_sortvars *svars)
 		err_exit("Invalid move!");
 }
 
-void	handle_standard_input(t_sortvars *svars)
+// run get_next_line() on standard input which is "0"
+// this function reads all the sa, ra, pa etc..
+// it will replicate the commands and check if the result is sorted
+void	handle_inputs(t_sortvars *svars)
 {
 	char		*line;
 
 	line = get_next_line(0);
 	while (line)
 	{
-		dispatch_command(line, svars);
+		run_command(line, svars);
 		free(line);
 		line = get_next_line(0);
 	}
@@ -67,5 +71,5 @@ int	main(int argc, char **argv)
 	argv++;
 	init_stacks(&svars, count_inputs(argv));
 	init_validation(&svars, argv);
-	handle_standard_input(&svars);
+	handle_inputs(&svars);
 }
