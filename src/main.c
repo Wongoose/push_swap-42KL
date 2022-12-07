@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:04:30 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/07 18:54:01 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/07 19:32:31 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@
 int	main(int argc, char **argv)
 {
 	t_sortvars	svars;
-	int			i;
 
-	i = 0;
 	if (argc == 1)
 		return (0);
 	argv++;

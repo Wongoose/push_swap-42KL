@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:04:47 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/06 17:50:43 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/07 22:16:31 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,12 @@ void	validate_input(t_sortvars *svars, char *num_str, int index)
 {
 	long	num;
 
-	if (ft_strlen(num_str) == 0)
-		putstr_err("Invalid input: No value provided!");
 	num = ft_atoi(num_str);
 	if (!valid_digits(num_str))
-		putstr_err("Invalid input: Found invalid character!");
+		err_exit(TRUE);
 	if (!valid_duplicate(svars, num, index))
-		putstr_err("Invalid input: Found duplicate number!");
+		err_exit(TRUE);
 	if (num > INT_MAX || num < INT_MIN)
-		putstr_err("Invalid input: A number is out of integer range!");
+		err_exit(TRUE);
 	svars->stka_arr[index] = (int)num;
 }

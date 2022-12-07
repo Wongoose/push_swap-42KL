@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:53:19 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/06 18:45:53 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/07 21:55:44 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ void	print_stacka(t_sortvars svars);
 void	print_stackb(t_sortvars svars);
 void	print_chunksb(t_sortvars svars, t_list *bchunks);
 void	print_chunksa(t_sortvars svars, t_list *achunks);
-void	err_exit(char *err);
-void	putstr_err(char *err);
+void	err_exit(t_bool display);
 void	sa(t_sortvars *svars, t_bool print);
 void	sb(t_sortvars *svars, t_bool print);
 void	ss(t_sortvars *svars, t_bool print);

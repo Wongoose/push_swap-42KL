@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:39:23 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/06 17:49:02 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/07 22:19:08 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	init_stacks(t_sortvars *svars, int count)
 	svars->stka_len = count;
 	svars->stka_arr = malloc(sizeof(int) * svars->stka_len);
 	if (!svars->stka_arr)
-		err_exit("Failed to allocate array in Stack A!");
+		err_exit(FALSE);
 	svars->stkb_len = 0;
 	svars->stkb_arr = malloc(sizeof(int) * svars->stka_len);
 	if (!svars->stkb_arr)
-		err_exit("Failed to allocate array in Stack B!");
+		err_exit(FALSE);
 	svars->stkb_arr += (count - 1);
 	svars->log_fd = 1;
 }
@@ -47,8 +47,6 @@ void	init_validation(t_sortvars *svars, char **argv)
 	{
 		if (ft_strchr(argv[i], ' ') != 0)
 		{
-			if (is_empty(argv[i]))
-				putstr_err("Invalid input: Empty input provided!");
 			j = 0;
 			temp_split = ft_split(argv[i], ' ');
 			while (temp_split[j])
@@ -76,13 +74,14 @@ int	count_inputs(char **argv)
 	j = 0;
 	while (argv[i])
 	{
+		if (!ft_strlen(argv[i]) || is_empty(argv[i]))
+			err_exit(i != 0);
 		if (ft_strchr(argv[i], ' ') != 0)
 		{
 			j = 0;
 			temp_split = ft_split(argv[i], ' ');
-			while (temp_split[j])
-				j++;
-			num_count += j;
+			while (temp_split[j++])
+				num_count++;
 			free_splitstr(temp_split);
 		}
 		else

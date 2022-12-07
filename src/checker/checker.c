@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:39:23 by zwong             #+#    #+#             */
-/*   Updated: 2022/12/06 17:53:40 by zwong            ###   ########.fr       */
+/*   Updated: 2022/12/07 21:55:59 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	run_command(char *cmd, t_sortvars *svars)
 	else if (!ft_strncmp(cmd, "rrr\n", 5))
 		rrr(svars, 0, FALSE);
 	else
-		err_exit("Invalid move!");
+		err_exit(TRUE);
 }
 
 // run get_next_line() on standard input which is "0"
